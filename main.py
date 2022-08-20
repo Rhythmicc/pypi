@@ -1,6 +1,7 @@
 import os
 from QuickStart_Rhy import remove, dir_char
 from QuickProject.Commander import Commander
+from . import *
 
 app = Commander(True)
 
@@ -14,14 +15,8 @@ def upload(msg: list):
     :return:
     """
     remove('dist')
-    with open('VERSION', 'r') as f:
-        version = f.read().strip().split('.')
-        version = [int(i) for i in version]
-        version[-1] += 1
-    with open('VERSION', 'w') as f:
-        f.write('.'.join([str(i) for i in version]))
-    if os.system('python3 setup.py sdist'):
-        os.system('python setup.py sdist')
+    update_version('VERSION')
+    os.system(f'{python_interpreter} setup.py sdist')
     os.system(f'twine upload dist{dir_char}*')
     app.real_call('git-push', msg)
 
