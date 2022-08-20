@@ -43,3 +43,13 @@ app.real_call('<function name>', *args, **kwargs)
 ## Other Cautions
 
 1. This project must be cloned as name `pypi`!
+
+
+## Developers
+
+1. Create a dictionary for Develop `QproCommander APP` such as `~/QproCommanderAPP`.
+2. Add this to your `.bashrc` or `.zshrc` or any others: 
+    ```sh
+    export PYTHONPATH=$PYTHONPATH:$HOME/QproCommanderAPP
+    ```
+3. Adjust `project_configure.json` -> `executable_filename` -> `python3 -m pypi.main`
