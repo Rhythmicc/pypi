@@ -9,8 +9,14 @@ def update_version(version_filepath: str):
     :return:
     """
     with open(version_filepath, 'r') as f:
-        version = f.read().strip().split('.')
-        version = [int(i) for i in version]
-        version[-1] += 1
+        lines = f.readlines()
     with open(version_filepath, 'w') as f:
-        f.write('.'.join([str(i) for i in version]))
+        for line in lines:
+            line = line.strip()
+            if line.startswith('VERSION'):
+                version = [int(i) for i in line.split('=')[1].strip().split('.')]
+                version[-1] += 1
+                print(f'VERSION = {".".join([str(i) for i in version])}', file=f)
+            else:
+                print(line, file=f)
+
