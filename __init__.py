@@ -12,11 +12,12 @@ def update_version(version_filepath: str):
         lines = f.readlines()
     with open(version_filepath, 'w') as f:
         for line in lines:
-            line = line.strip()
-            if line.startswith('VERSION'):
-                version = [int(i) for i in line.split('=')[1].strip().split('.')]
+            line = line.strip('\n')
+            _line = line.strip()
+            if _line.startswith('VERSION'):
+                version = [int(i) for i in line.split('=')[1].strip().strip("'").strip('"').split('.')]
                 version[-1] += 1
-                print(f'VERSION = {".".join([str(i) for i in version])}', file=f)
+                print(f'VERSION = "{".".join([str(i) for i in version])}"', file=f)
             else:
                 print(line, file=f)
 

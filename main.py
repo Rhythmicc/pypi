@@ -15,7 +15,7 @@ def upload(msg: list):
     :return:
     """
     remove('dist')
-    update_version('VERSION')
+    update_version('setup.py')
     os.system(f'{python_interpreter} setup.py sdist')
     os.system(f'twine upload dist{dir_char}*')
     app.real_call('git-push', msg)
