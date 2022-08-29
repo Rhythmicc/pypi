@@ -1,0 +1,49 @@
+#compdef pypi
+
+local cur prev
+cur=${words[CURRENT]}
+prev=${words[CURRENT-1]}
+
+(( $+functions[_pypi_args_comp] )) || 
+_pypi_args_comp() {
+    local -a opt_args
+    if [[ ${prev} == post ]]; then
+        opt_args=(
+            
+        )
+    elif [[ ${prev} == get ]]; then
+        opt_args=(
+            
+        )
+    elif [[ ${prev} == gen-complete ]]; then
+        opt_args=(
+            --project_name:'项目名称'
+        )
+else
+    _arguments -S -s '*:filename:_files'
+    return
+fi
+
+    _describe subcommand opt_args
+}
+
+(( $+functions[_pypi_main] )) || 
+_pypi_main() {
+    local -a args
+    args=(
+        --help:'获取帮助'
+        upload:'发布并提交到git'
+        git-push:'提交到git'
+        post:'在开发环境应用'
+        get:'获取开发环境的文件'
+        gen-complete:'为 Pypi Commander APP 生成自动补全脚本'
+    )
+
+    _describe -t common-commands 'common commands' args && _ret=0
+}
+
+if (( ${#words} >= 3 )); then
+    _pypi_args_comp
+else
+    _pypi_main
+fi
