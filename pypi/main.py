@@ -17,12 +17,15 @@ def upload(msg: list):
     requirePackage('QuickStart_Rhy', 'remove')('dist')
     update_version('setup.py')
     with QproDefaultConsole.status('正在打包') as st:
-        _st, ct = external_exec(f'{python_interpreter} setup.py sdist', without_output=True)
+        _st, ct = external_exec(f'{python_interpreter} setup.py sdist',
+                                without_output=True)
         if _st != 0:
             QproDefaultConsole.print(QproErrorString, ct)
             return
         st.update('正在上传')
-        _st, ct = external_exec(f'{python_interpreter} -m twine upload {os.path.join("dist", "*")}', without_output=True)
+        _st, ct = external_exec(
+            f'{python_interpreter} -m twine upload {os.path.join("dist", "*")}',
+            without_output=True)
         if _st != 0:
             QproDefaultConsole.print(QproErrorString, ct)
             return
@@ -77,5 +80,9 @@ def get(path: str):
     external_exec(f'Qpro get {path}')
 
 
-if __name__ == '__main__':
+def main():
     app()
+
+
+if __name__ == '__main__':
+    main()
