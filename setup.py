@@ -7,7 +7,7 @@ VERSION = '0.0.1'
 setup(
     name='pypi',
     version=VERSION,
-    description='< your pypi lib description >',
+    description='A pypi auto scripts for QproPypi*Template',
     long_description=long_description,
     long_description_content_type="text/markdown",
     classifiers=[
@@ -15,9 +15,9 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    keywords='< your pypi lib keywords >',
-    author='< your name >',
-    url="< which url to find your lib >",
+    keywords='',
+    author='RhythmLian',
+    url="https://github.com/Rhythmicc/pypi",
     license='MIT',
     packages=find_packages(),
     include_package_data=True,
