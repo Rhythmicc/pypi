@@ -45,7 +45,7 @@ def git_push(msg: list, with_version_update: bool = False):
         update_version('setup.py')
     cmds = {
         '保存': f'git add .',
-        '提交': f'git commit -m "{msg}"',
+        '提交': f'git commit -m "{" ".join(msg)}"',
         '上传': 'git push',
         'Gitee': 'git push gitee'
     }
