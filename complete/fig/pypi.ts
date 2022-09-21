@@ -28,6 +28,11 @@ const completionSpec: Fig.Spec = {
             "args": [],
             "options": [
                 {
+                    "name": "--with_version_update",
+                    "description": "是否更新版本号",
+                    "isOptional": true
+                },
+                {
                     "name": "-msg",
                     "description": "提交简要",
                     "args": {
@@ -64,22 +69,6 @@ const completionSpec: Fig.Spec = {
                         "filepaths",
                         "folders"
                     ]
-                }
-            ],
-            "options": []
-        },
-        {
-            "name": "gen-complete",
-            "description": "为 Pypi Commander APP 生成自动补全脚本",
-            "args": [
-                {
-                    "name": "--project_name",
-                    "description": "项目名称",
-                    "isOptional": true,
-                    "args": {
-                        "name": "project_name",
-                        "description": "项目名称"
-                    }
                 }
             ],
             "options": []

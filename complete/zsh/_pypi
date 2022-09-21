@@ -7,14 +7,23 @@ prev=${words[CURRENT-1]}
 (( $+functions[_pypi_args_comp] )) || 
 _pypi_args_comp() {
     local -a opt_args
-    if [[ ${prev} == 'gen-complete' ]]; then
+    if [[ ${prev} == git-push ]]; then
         opt_args=(
-            --project_name:'项目名称'
+            --with_version_update:'是否更新版本号'
+            -msg:'提交简要'
         )
-    else
-        _arguments -S -s '*:filename:_files'
-        return
-    fi
+    elif [[ ${prev} == post ]]; then
+        opt_args=(
+            
+        )
+    elif [[ ${prev} == get ]]; then
+        opt_args=(
+            
+        )
+else
+    _arguments -S -s '*:filename:_files'
+    return
+fi
 
     _describe subcommand opt_args
 }
@@ -28,7 +37,6 @@ _pypi_main() {
         git-push:'提交到git'
         post:'在开发环境应用'
         get:'获取开发环境的文件'
-        gen-complete:'为 Pypi Commander APP 生成自动补全脚本'
     )
 
     _describe -t common-commands 'common commands' args && _ret=0
