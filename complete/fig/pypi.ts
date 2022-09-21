@@ -28,11 +28,6 @@ const completionSpec: Fig.Spec = {
             "args": [],
             "options": [
                 {
-                    "name": "--with_version_update",
-                    "description": "是否更新版本号",
-                    "isOptional": true
-                },
-                {
                     "name": "-msg",
                     "description": "提交简要",
                     "args": {
@@ -40,6 +35,11 @@ const completionSpec: Fig.Spec = {
                         "description": "提交简要",
                         "isVariadic": true
                     }
+                },
+                {
+                    "name": "--with_version_update",
+                    "description": "是否更新版本号",
+                    "isOptional": true
                 }
             ]
         },

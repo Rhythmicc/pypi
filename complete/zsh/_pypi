@@ -7,12 +7,7 @@ prev=${words[CURRENT-1]}
 (( $+functions[_pypi_args_comp] )) || 
 _pypi_args_comp() {
     local -a opt_args
-    if [[ ${prev} == git-push ]]; then
-        opt_args=(
-            --with_version_update:'是否更新版本号'
-            -msg:'提交简要'
-        )
-    elif [[ ${prev} == post ]]; then
+    if [[ ${prev} == post ]]; then
         opt_args=(
             
         )
