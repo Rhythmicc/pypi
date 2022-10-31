@@ -1,9 +1,10 @@
 import os
+from re import L
 from QuickProject import QproErrorString
 from QuickProject.Commander import Commander
 from . import *
 
-app = Commander(True)
+app = Commander(name, True)
 
 
 @app.command()
@@ -14,22 +15,24 @@ def upload(msg: list):
     :param msg: 更新简要
     :return:
     """
-    requirePackage('QuickStart_Rhy', 'remove')('dist')
-    update_version('setup.py')
-    with QproDefaultConsole.status('正在打包') as st:
-        _st, ct = external_exec(f'{python_interpreter} setup.py sdist',
-                                without_output=True)
+    requirePackage("QuickStart_Rhy", "remove")("dist")
+    update_version("setup.py")
+    with QproDefaultConsole.status("正在打包") as st:
+        _st, ct = external_exec(
+            f"{python_interpreter} setup.py sdist", without_output=True
+        )
         if _st != 0:
             QproDefaultConsole.print(QproErrorString, ct)
             return
-        st.update('正在上传')
+        st.update("正在上传")
         _st, ct = external_exec(
             f'{python_interpreter} -m twine upload {os.path.join("dist", "*")}',
-            without_output=True)
+            without_output=True,
+        )
         if _st != 0:
             QproDefaultConsole.print(QproErrorString, ct)
             return
-    app.real_call('git-push', msg)
+    app.real_call("git-push", msg)
 
 
 @app.command()
@@ -42,16 +45,16 @@ def git_push(msg: list, with_version_update: bool = False):
     :return:
     """
     if with_version_update:
-        update_version('setup.py')
+        update_version("setup.py")
     cmds = {
-        '保存': f'git add .',
-        '提交': f'git commit -m "{" ".join(msg)}"',
-        '上传': 'git push',
-        'Gitee': 'git push gitee'
+        "保存": f"git add .",
+        "提交": f'git commit -m "{" ".join(msg)}"',
+        "上传": "git push",
+        "Gitee": "git push gitee",
     }
-    with QproDefaultConsole.status('正在提交') as st:
+    with QproDefaultConsole.status("正在提交") as st:
         for k, v in cmds.items():
-            st.update(f'正在{k}')
+            st.update(f"正在{k}")
             _st, ct = external_exec(v, without_output=True)
             if _st != 0:
                 QproDefaultConsole.print(QproErrorString, ct)
@@ -66,7 +69,7 @@ def post(path: str):
     :param path: 文件路径
     :return:
     """
-    external_exec(f'Qpro scp {path}')
+    external_exec(f"Qpro scp {path}")
 
 
 @app.command()
@@ -77,12 +80,20 @@ def get(path: str):
     :param path: 文件路径
     :return:
     """
-    external_exec(f'Qpro get {path}')
+    external_exec(f"Qpro get {path}")
+
+
+@app.command()
+def update():
+    """
+    更新QuickProject
+    """
+    external_exec(f"{user_pip} install -U Qpro")
 
 
 def main():
     app()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
