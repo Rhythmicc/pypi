@@ -8,13 +8,13 @@ prev=${words[CURRENT-1]}
 _pypi_args_comp() {
     local -a opt_args
     if [[ ${prev} == post ]]; then
-        opt_args=(
-            
-        )
+                opt_args=(
+                    
+                )
     elif [[ ${prev} == get ]]; then
-        opt_args=(
-            
-        )
+                opt_args=(
+                    
+                )
 else
     _arguments -S -s '*:filename:_files'
     return
@@ -28,6 +28,7 @@ _pypi_main() {
     local -a args
     args=(
         --help:'获取帮助'
+        complete:'complete'
         upload:'发布并提交到git'
         git-push:'提交到git'
         post:'在开发环境应用'
