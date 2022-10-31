@@ -4,34 +4,40 @@ const completionSpec: Fig.Spec = {
     "subcommands": [
         {
             "name": "--help",
-            "description": "获取帮助"
+            "description": "获取帮助",
+            "options": [
+                {
+                    "name": "--hidden",
+                    "description": "显示隐藏命令"
+                }
+            ]
         },
         {
             "name": "complete",
-            "description": "complete",
+            "description": "获取补全列表",
             "args": [],
             "options": [
                 {
                     "name": "--team",
-                    "description": "<team>",
+                    "description": "团队名",
                     "isOptional": true,
                     "args": {
                         "name": "team",
-                        "description": "<team>"
+                        "description": "团队名"
                     }
                 },
                 {
                     "name": "--token",
-                    "description": "<token>",
+                    "description": "团队token",
                     "isOptional": true,
                     "args": {
                         "name": "token",
-                        "description": "<token>"
+                        "description": "团队token"
                     }
                 },
                 {
                     "name": "--is_script",
-                    "description": "<is_script>"
+                    "description": "是否为脚本"
                 }
             ]
         },
@@ -99,6 +105,12 @@ const completionSpec: Fig.Spec = {
                     ]
                 }
             ],
+            "options": []
+        },
+        {
+            "name": "update",
+            "description": "更新QuickProject",
+            "args": [],
             "options": []
         }
     ]
