@@ -13,35 +13,6 @@ const completionSpec: Fig.Spec = {
             ]
         },
         {
-            "name": "complete",
-            "description": "获取补全列表",
-            "args": [],
-            "options": [
-                {
-                    "name": "--team",
-                    "description": "团队名",
-                    "isOptional": true,
-                    "args": {
-                        "name": "team",
-                        "description": "团队名"
-                    }
-                },
-                {
-                    "name": "--token",
-                    "description": "团队token",
-                    "isOptional": true,
-                    "args": {
-                        "name": "token",
-                        "description": "团队token"
-                    }
-                },
-                {
-                    "name": "--is_script",
-                    "description": "是否为脚本"
-                }
-            ]
-        },
-        {
             "name": "upload",
             "description": "发布并提交到git",
             "args": [],
@@ -58,7 +29,7 @@ const completionSpec: Fig.Spec = {
             ]
         },
         {
-            "name": "git-push",
+            "name": "git_push",
             "description": "提交到git",
             "args": [],
             "options": [

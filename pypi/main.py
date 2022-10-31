@@ -4,7 +4,7 @@ from QuickProject import QproErrorString
 from QuickProject.Commander import Commander
 from . import *
 
-app = Commander(name, True, non_complete=True)
+app = Commander(name, non_complete=True)
 
 
 @app.command()
