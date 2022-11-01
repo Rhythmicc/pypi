@@ -29,7 +29,7 @@ const completionSpec: Fig.Spec = {
             ]
         },
         {
-            "name": "git_push",
+            "name": "git-push",
             "description": "提交到git",
             "args": [],
             "options": [

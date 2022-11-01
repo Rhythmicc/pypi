@@ -29,7 +29,7 @@ _pypi_main() {
     args=(
         --help:'获取帮助'
         upload:'发布并提交到git'
-        git_push:'提交到git'
+        git-push:'提交到git'
         post:'在开发环境应用'
         get:'获取开发环境的文件'
         update:'更新QuickProject'
