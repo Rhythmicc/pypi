@@ -89,6 +89,7 @@ def update():
     更新QuickProject
     """
     external_exec(f"{user_pip} install -U Qpro")
+    external_exec(f"{user_pip} install -U git+https://github.com/Rhythmicc/pypi.git")
 
 
 def main():
