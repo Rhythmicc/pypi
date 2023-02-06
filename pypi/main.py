@@ -1,5 +1,4 @@
 import os
-from re import L
 from QuickProject import QproErrorString
 from QuickProject.Commander import Commander
 from . import *
@@ -33,6 +32,26 @@ def upload(msg: list):
             QproDefaultConsole.print(QproErrorString, ct)
             return
     app.real_call("git-push", msg)
+
+
+@app.command()
+def delete(package: str = os.path.basename(os.getcwd()), version: str = None):
+    """
+    删除版本
+
+    :param version: 版本号, 默认为当前版本
+    :return:
+    """
+    if not version:
+        version = get_version("setup.py")
+    with QproDefaultStatus("正在删除"):
+        _st, ct = external_exec(
+            f"{python_interpreter} -m twine delete {package}=={version}",
+            without_output=True,
+        )
+        if _st != 0:
+            QproDefaultConsole.print(QproErrorString, ct)
+            return
 
 
 @app.command()
