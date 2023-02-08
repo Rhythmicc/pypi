@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-name = "pypi"
+executable_name = name = "pypi"
 
 from .__config__ import *
 
