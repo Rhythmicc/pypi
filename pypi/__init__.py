@@ -104,6 +104,7 @@ def update_version(version_filepath: str):
                     for i in line.split("=")[1].strip().strip("'").strip('"').split(".")
                 ]
                 version[-1] += 1
+                QproDefaultConsole.print('执行: "poetry version ' + ".".join([str(i) for i in version]) + '"')
                 external_exec('poetry version ' + ".".join([str(i) for i in version]))
                 break
 
