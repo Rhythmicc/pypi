@@ -94,19 +94,17 @@ def update_version(version_filepath: str):
     """
     with open(version_filepath, "r") as f:
         lines = f.readlines()
-    with open(version_filepath, "w") as f:
-        for line in lines:
-            line = line.strip("\n")
-            _line = line.strip()
-            if _line.startswith("version"):
-                version = [
-                    int(i)
-                    for i in line.split("=")[1].strip().strip("'").strip('"').split(".")
-                ]
-                version[-1] += 1
-                QproDefaultConsole.print('执行: "poetry version ' + ".".join([str(i) for i in version]) + '"')
-                external_exec('poetry version ' + ".".join([str(i) for i in version]))
-                break
+    for line in lines:
+        line = line.strip("\n")
+        _line = line.strip()
+        if _line.startswith("version"):
+            version = [
+                int(i)
+                for i in line.split("=")[1].strip().strip("'").strip('"').split(".")
+            ]
+            version[-1] += 1
+            external_exec('poetry version ' + ".".join([str(i) for i in version]))
+            break
 
 
 def get_version(version_filepath: str) -> str:
