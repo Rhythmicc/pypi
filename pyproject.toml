@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pypi"
-version = "0.0.6"
+version = "0.0.7"
 description = "A pypi auto scripts for Qpro*Template"
 authors = ["Rhythmicc <rhythmlian.cn@gmail.com>"]
 license = "MIT"

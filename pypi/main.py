@@ -15,7 +15,7 @@ def upload(msg: list):
     :return:
     """
     requirePackage("QuickStart_Rhy", "remove")("dist")
-    update_version("pyproject.toml")
+    update_version("pyproject.toml" if os.path.exists("pyproject.toml") else "setup.py")
     with QproDefaultConsole.status("正在打包") as st:
         _st, ct = external_exec("poetry build")
         if _st != 0:
