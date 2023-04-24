@@ -15,11 +15,9 @@ def upload(msg: list):
     :return:
     """
     requirePackage("QuickStart_Rhy", "remove")("dist")
-    update_version("setup.py")
+    update_version("pyproject.toml")
     with QproDefaultConsole.status("正在打包") as st:
-        _st, ct = external_exec(
-            f"{python_interpreter} setup.py sdist", without_output=True
-        )
+        _st, ct = external_exec("poetry build")
         if _st != 0:
             QproDefaultConsole.print(QproErrorString, ct)
             return
@@ -43,7 +41,7 @@ def delete(package: str = os.path.basename(os.getcwd()), version: str = None):
     :return:
     """
     if not version:
-        version = get_version("setup.py")
+        version = get_version("pyproject.toml")
     with QproDefaultStatus("正在删除"):
         _st, ct = external_exec(
             f"{python_interpreter} -m twine delete {package}=={version}",
@@ -64,7 +62,7 @@ def git_push(msg: list, with_version_update: bool = False):
     :return:
     """
     if with_version_update:
-        update_version("setup.py")
+        update_version("pyproject.toml")
     cmds = {
         "保存": f"git add .",
         "提交": f'git commit -m "{" ".join(msg)}"',

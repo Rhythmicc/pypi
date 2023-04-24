@@ -98,15 +98,14 @@ def update_version(version_filepath: str):
         for line in lines:
             line = line.strip("\n")
             _line = line.strip()
-            if _line.startswith("VERSION"):
+            if _line.startswith("version"):
                 version = [
                     int(i)
                     for i in line.split("=")[1].strip().strip("'").strip('"').split(".")
                 ]
                 version[-1] += 1
-                print(f'VERSION = "{".".join([str(i) for i in version])}"', file=f)
-            else:
-                print(line, file=f)
+                external_exec('poetry version "' + ".".join([str(i) for i in version]) + '"')
+                break
 
 
 def get_version(version_filepath: str) -> str:
@@ -120,6 +119,6 @@ def get_version(version_filepath: str) -> str:
         lines = f.readlines()
     for line in lines:
         line = line.strip("\n").strip()
-        if line.startswith("VERSION"):
+        if line.startswith("version"):
             return line.split("=")[1].strip().strip("'").strip('"')
     return None
