@@ -119,7 +119,7 @@ def update_version(version_filepath: str):
                         )
                     ]
                     version[-1] += 1
-                    line = f"VERSION = '{'.'.join([str(i) for i in version])}'"
+                    line = f'VERSION = "{".".join([str(i) for i in version])}"'
                 f.write(line + "\n")
 
 
