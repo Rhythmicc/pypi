@@ -15,11 +15,11 @@ readme = "README.md"
 user = "lianhaocheng"
 host = "localhost"
 port = 22
-path = "/opt/homebrew/lib/python3.10/site-packages/"
+path = "/opt/homebrew/lib/python3.13/site-packages/"
 
 [tool.poetry.dependencies]
-python = "^3.7"
-Qpro = "^0.12.1"
+python = "^3.8"
+Qpro = "^0.13.0"
 
 [tool.poetry.scripts]
 pypi = "pypi.main:main"
